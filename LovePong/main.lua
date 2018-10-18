@@ -1,9 +1,18 @@
-require "src/game"
-
-game = Game()
 
 function love.load(arg)
   
+  Object = require "lib/object"
+  
+  require "src/actor"
+  require "src/game"
+  require "src/ball"
+  require "src/paddle"
+  require "src/score"
+  require "src/PlayerController"
+  require "src/CpuController"
+  require "lib/vector"
+
+  game = Game()
 end
 
 function love.update(dt)
