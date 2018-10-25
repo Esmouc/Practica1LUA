@@ -9,11 +9,13 @@ function Game:new()
   self.lObjects = {}
   
   self.ball = Ball(ballPath)
+  self.background = Actor(backgroundPath, w/2, h/2)
   self.player = Paddle(playerPath,playerInitPosX, playerInitPosY, paddleWidth, paddleHeight, paddleSpeed, PlayerController())
   self.cpu = Paddle(cpuPath,cpuInitPosX, cpuInitPosY, paddleWidth, paddleHeight, paddleSpeed,CpuController())
   self.playerScore = Score(playerScrX,playerScrY,playerScrXO,playerScrYO,playerScrSize,playerScrAlign)
   self.cpuScore = Score(cpuScrX,cpuScrY,cpuScrXO,cpuScrYO,cpuScrSize,cpuScrAlign)
   
+  table.insert(self.lObjects, self.background)
   table.insert(self.lObjects, self.ball)
   table.insert(self.lObjects, self.player)
   table.insert(self.lObjects, self.cpu)

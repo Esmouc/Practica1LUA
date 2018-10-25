@@ -1,6 +1,10 @@
 w = love.graphics.getWidth()
 h = love.graphics.getHeight()
 
+-- GAME DATA
+
+scoreIncrement = 100
+
 -- PADDLE DATA
 
 paddleWidth = 20
@@ -10,7 +14,7 @@ paddleSpeed = 350
 -- PLAYER DATA
 
 playerPath = "sprites/paddleblue.png"
-playerInitPosX = 2*paddleWidth
+playerInitPosX = 3*paddleWidth
 playerInitPosY = h/2 - paddleHeight/2
 
 -- CPU DATA
@@ -23,7 +27,7 @@ cpuInitPosY = h/2 - paddleHeight/2
 
 ballPath = "sprites/ballwhite.png"
 radius = 15
-ballSpeed = 100
+ballSpeed = 300
 speedIncrease = 10
 
 -- TEXT DATA
@@ -51,5 +55,5 @@ cpuScrAlign = "left"
 
 -- BACKGROUND
 
-backgroundPath = "pongbg.png"
+backgroundPath = "sprites/pongbg.png"
 

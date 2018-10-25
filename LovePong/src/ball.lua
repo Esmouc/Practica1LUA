@@ -13,7 +13,11 @@ function Ball:update(dt)
   
   -- COLISION CON LOS BORDES DEL CAMPO
   
-  if self.position.y > h - 10 or self.position.y < 10 then
+  if self.position.y > h - self.width and self.forward.y > 0 then
+    self:horizontalBounce()
+  end
+  
+  if self.position.y < self.width and self.forward.y < 0 then
     self:horizontalBounce()
   end
   
@@ -27,13 +31,13 @@ function Ball:update(dt)
   -- MUERTE
   
   if self.position.x < 0 then
-    game.cpuScore.value = game.cpuScore.value + 100
+    game.cpuScore.value = game.cpuScore.value + scoreIncrement
     self.position.x, self.position.y = w/2, h/2
     speed = ballSpeed
   end
   
   if self.position.x > w  then
-    game.playerScore.value = game.playerScore.value + 100
+    game.playerScore.value = game.playerScore.value + scoreIncrement
     self.position.x, self.position.y = w/2, h/2
     speed = ballSpeed
   end
