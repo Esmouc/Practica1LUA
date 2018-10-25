@@ -1,7 +1,7 @@
 Paddle = Actor:extend()
 
-function Paddle:new(x,y,width,height,speed,controller)
-  Paddle.super.new(self,x,y,width,height,speed,0,0,1)
+function Paddle:new(image,x,y,width,height,speed,controller)
+  Paddle.super.new(self,image,x,y,width,height,speed,0,0,1)
   self.controller = controller
 end
 
@@ -10,5 +10,5 @@ function Paddle:update(dt)
 end
 
 function Paddle:draw()
-  love.graphics.rectangle("fill", self.position.x, self.position.y, self.width, self.height);  
+  self.super.draw(self)
 end

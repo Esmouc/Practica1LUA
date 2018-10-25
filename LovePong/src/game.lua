@@ -1,7 +1,5 @@
 Game = Object:extend()
 
-local w, h
-
 local lObjects = {}
 
 function Game:new()
@@ -10,11 +8,11 @@ function Game:new()
   
   self.lObjects = {}
   
-  self.ball = Ball()
-  self.player = Paddle(50, love.graphics.getHeight()/2 - 25, 10, 50, 350, PlayerController())
-  self.cpu = Paddle(love.graphics.getWidth()-10-50, love.graphics.getHeight()/2 - 25, 10, 50, 350,CpuController())
-  self.playerScore = Score(love.graphics.getWidth()/2,20,-250,0,200,"right")
-  self.cpuScore = Score(love.graphics.getWidth()/2,20,60,0,200,"left")
+  self.ball = Ball(ballPath)
+  self.player = Paddle(playerPath,playerInitPosX, playerInitPosY, paddleWidth, paddleHeight, paddleSpeed, PlayerController())
+  self.cpu = Paddle(cpuPath,cpuInitPosX, cpuInitPosY, paddleWidth, paddleHeight, paddleSpeed,CpuController())
+  self.playerScore = Score(playerScrX,playerScrY,playerScrXO,playerScrYO,playerScrSize,playerScrAlign)
+  self.cpuScore = Score(cpuScrX,cpuScrY,cpuScrXO,cpuScrYO,cpuScrSize,cpuScrAlign)
   
   table.insert(self.lObjects, self.ball)
   table.insert(self.lObjects, self.player)
@@ -22,7 +20,7 @@ function Game:new()
   table.insert(self.lObjects, self.playerScore)
   table.insert(self.lObjects, self.cpuScore)
   
-  font = love.graphics.newFont("pong.ttf",50)
+  font = love.graphics.newFont(fontPath, fontSize)
   love.graphics.setFont(font)
   
 end
@@ -41,7 +39,5 @@ function Game:draw()
   for _,v in pairs(self.lObjects) do
     v:draw(dt)
   end
-  
-  love.graphics.line(love.graphics.getWidth()/2, 0, love.graphics.getWidth()/2, love.graphics.getHeight());
   
 end

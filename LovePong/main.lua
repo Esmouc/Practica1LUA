@@ -11,6 +11,7 @@ function love.load(arg)
   require "src/PlayerController"
   require "src/CpuController"
   require "lib/vector"
+  require "data"
 
   game = Game()
 end

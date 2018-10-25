@@ -1,7 +1,7 @@
 Ball = Actor:extend()
 
-function Ball:new()
-  Ball.super.new(self,love.graphics.getWidth()/2,love.graphics.getHeight()/2,10,10,300,0)
+function Ball:new(image)
+  Ball.super.new(self,image,w/2,h/2,radius,radius,ballSpeed,0)
   self.forward = Vector.new(-1,1):normalize()
 end
 
@@ -13,14 +13,14 @@ function Ball:update(dt)
   
   -- COLISION CON LOS BORDES DEL CAMPO
   
-  if self.position.y > love.graphics.getHeight() - 10 or self.position.y < 10 then
+  if self.position.y > h - 10 or self.position.y < 10 then
     self:horizontalBounce()
   end
   
   -- COLISION CON LOS PADDLES
   
   if self:checkSquareCollision (game.player) or self:checkSquareCollision (game.cpu) then
-    self:addSpeed(10)
+    self:addSpeed(speedIncrease)
     self:verticalBounce()
   end
   
@@ -28,27 +28,28 @@ function Ball:update(dt)
   
   if self.position.x < 0 then
     game.cpuScore.value = game.cpuScore.value + 100
-    self.position.x, self.position.y = love.graphics.getWidth()/2, love.graphics.getHeight()/2
-    speed = 300
+    self.position.x, self.position.y = w/2, h/2
+    speed = ballSpeed
   end
   
-  if self.position.x > love.graphics.getWidth()  then
+  if self.position.x > w  then
     game.playerScore.value = game.playerScore.value + 100
-    self.position.x, self.position.y = love.graphics.getWidth()/2, love.graphics.getHeight()/2
-    speed = 300
+    self.position.x, self.position.y = w/2, h/2
+    speed = ballSpeed
   end
   
 end
 
 function Ball:draw()
-    love.graphics.circle("fill", self.position.x, self.position.y, self.width)
+  self.super.draw(self)
 end
 
 function Ball:checkSquareCollision(object)
-  local DeltaX = self.position.x - math.max(object.position.x, math.min(self.position.x, object.position.x + object.width));
-  local DeltaY = self.position.y - math.max(object.position.y, math.min(self.position.y, object.position.y + object.height));
   
-  if (DeltaX * DeltaX + DeltaY * DeltaY) < (object.width * object.width) then
+  DeltaX = self.position.x - math.max(object.position.x-object.origin.x, math.min(self.position.x, object.position.x + object.width/2));
+  DeltaY = self.position.y - math.max(object.position.y-object.origin.y, math.min(self.position.y, object.position.y + object.height/2));
+  
+  if (DeltaX * DeltaX + DeltaY * DeltaY) < (self.width * self.width) then
     return true
   end
   return false
