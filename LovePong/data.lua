@@ -13,13 +13,13 @@ paddleSpeed = 350
 
 -- PLAYER DATA
 
-playerPath = "sprites/paddleblue.png"
+playerPath = "sprites/paddle2.png"
 playerInitPosX = 3*paddleWidth
 playerInitPosY = h/2 - paddleHeight/2
 
 -- CPU DATA
 
-cpuPath = "sprites/paddle2.png"
+cpuPath = "sprites/paddleblue.png"
 cpuInitPosX = w-3*paddleWidth
 cpuInitPosY = h/2 - paddleHeight/2
 
@@ -33,7 +33,7 @@ speedIncrease = 10
 -- TEXT DATA
 
 fontSize = 50
-fontPath = "pong.ttf"
+fontPath = "D-DIN-Bold.otf"
 
 -- PLAYER SCORE TEXT DATA
 
