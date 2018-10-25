@@ -9,7 +9,7 @@ scoreIncrement = 100
 
 paddleWidth = 20
 paddleHeight = 100
-paddleSpeed = 350
+paddleSpeed = 500
 
 -- PLAYER DATA
 
@@ -28,7 +28,7 @@ cpuInitPosY = h/2 - paddleHeight/2
 ballPath = "sprites/ballwhite.png"
 radius = 15
 ballSpeed = 300
-speedIncrease = 10
+speedIncrease = 30
 
 -- TEXT DATA
 

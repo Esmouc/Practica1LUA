@@ -33,13 +33,13 @@ function Ball:update(dt)
   if self.position.x < 0 then
     game.cpuScore.value = game.cpuScore.value + scoreIncrement
     self.position.x, self.position.y = w/2, h/2
-    speed = ballSpeed
+    self.speed = ballSpeed
   end
   
   if self.position.x > w  then
     game.playerScore.value = game.playerScore.value + scoreIncrement
     self.position.x, self.position.y = w/2, h/2
-    speed = ballSpeed
+    self.speed = ballSpeed
   end
   
 end
@@ -61,7 +61,7 @@ function Ball:checkSquareCollision(object)
 end
 
 function Ball:addSpeed(speed)
-  self.ballSpeed = self.speed + speed
+  self.speed = self.speed + speed
 end
 
 function Ball:verticalBounce()
