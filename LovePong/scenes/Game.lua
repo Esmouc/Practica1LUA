@@ -8,12 +8,15 @@ function Game:new()
   
   self.lObjects = {}
   
-  self.ball = Ball(ballPath)
-  self.background = Actor(backgroundPath, w/2, h/2)
-  self.player = Paddle(playerPath,playerInitPosX, playerInitPosY, paddleWidth, paddleHeight, paddleSpeed, PlayerController())
-  self.cpu = Paddle(cpuPath,cpuInitPosX, cpuInitPosY, paddleWidth, paddleHeight, paddleSpeed,CpuController())
-  self.playerScore = Score(playerScrX,playerScrY,playerScrXO,playerScrYO,playerScrSize,playerScrAlign)
-  self.cpuScore = Score(cpuScrX,cpuScrY,cpuScrXO,cpuScrYO,cpuScrSize,cpuScrAlign)
+  -- GAME OBJECTS
+  self.ball = GameObject({BallScript()},Transform(w/2,h/2,-1,1),SpriteRenderer(ballBluePath))
+  self.background = GameObject({},Transform(w/2,h/2),SpriteRenderer(bgPath))
+  self.player = GameObject({PlayerController()},Transform(playerInitPosX,playerInitPosY),SpriteRenderer(playerPath))
+  self.cpu = GameObject({CpuController()},Transform(cpuInitPosX,cpuInitPosY),SpriteRenderer(cpuPath))
+  
+  -- UI
+  self.playerScore = Text(playerScrX,playerScrY,playerScrXO,playerScrYO,playerScrSize,playerScrAlign)
+  self.cpuScore = Text(cpuScrX,cpuScrY,cpuScrXO,cpuScrYO,cpuScrSize,cpuScrAlign)
   
   table.insert(self.lObjects, self.background)
   table.insert(self.lObjects, self.ball)
@@ -21,9 +24,6 @@ function Game:new()
   table.insert(self.lObjects, self.cpu)
   table.insert(self.lObjects, self.playerScore)
   table.insert(self.lObjects, self.cpuScore)
-  
-  font = love.graphics.newFont(fontPath, fontSize)
-  love.graphics.setFont(font)
   
 end
 

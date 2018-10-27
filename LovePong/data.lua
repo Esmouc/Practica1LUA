@@ -25,15 +25,18 @@ cpuInitPosY = h/2 - paddleHeight/2
 
 -- BALL DATA
 
-ballPath = "sprites/ballwhite.png"
+ballBluePath = "sprites/ballblue.png"
+ballWhitePath = "sprites/ballblue.png"
+ballOrangePath = "sprites/ballorange.png"
 radius = 15
 ballSpeed = 300
 speedIncrease = 30
 
 -- TEXT DATA
 
+titleFontSize = 200
 fontSize = 50
-fontPath = "D-DIN-Bold.otf"
+fontPath = "font/D-DIN-Bold.otf"
 
 -- PLAYER SCORE TEXT DATA
 
@@ -55,5 +58,12 @@ cpuScrAlign = "left"
 
 -- BACKGROUND
 
-backgroundPath = "sprites/pongbg.png"
+bgPath = "sprites/pongbg.png"
+bluebgPath = "sprites/bluebg.png"
+orangebgPath = "sprites/orangebg.png"
+
+-- COLORS
+
+colors = {WHITE = {1,1,1,1}, GREY = {0.831, 0.831, 0.831, 1}, DARKGREY = {0.521, 0.521, 0.521,1}, BLACK = {0,0,0,1}, BLUE = {0.180,0.631,0.960,1}, RED = {1,0,0,1}}
+
 
