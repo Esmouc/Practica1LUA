@@ -1,11 +1,17 @@
 BallScript = Object:extend()
 
-function BallScript:new(image)
+function BallScript:new()
   self.speed = ballSpeed
 end
 
 function BallScript:update(dt, gameobject)
+  
+  -- SOUNDS
    
+  pum:setPitch(pitch)
+  clack:setPitch(pitch)
+  clin:setPitch(pitch)
+  
   -- MOVIMIENTO
   
   gameobject.transform.position = gameobject.transform.position + self.speed * gameobject.transform.forward * dt 
@@ -14,20 +20,26 @@ function BallScript:update(dt, gameobject)
   
   if gameobject.transform.position.y > h - gameobject.spriteRenderer.origin.y and gameobject.transform.forward.y > 0 then
     self:horizontalBounce(gameobject)
+    clack:play()
   end
   
   if gameobject.transform.position.y < gameobject.spriteRenderer.origin.y and gameobject.transform.forward.y < 0 then
     self:horizontalBounce(gameobject)
+    clack:play()
   end
   
   -- COLISION CON LOS PADDLES
   
   if self:checkSquareCollision (gameobject,game.player) then
     self:paddleHit(gameobject, ballOrangePath)
+    pum:play()
+    pitch = pitch + 0.1
   end
   
   if self:checkSquareCollision (gameobject,game.cpu) then
     self:paddleHit(gameobject, ballBluePath)
+    pum:play()
+    pitch = pitch + 0.1
   end
   
   -- MUERTE
@@ -36,12 +48,14 @@ function BallScript:update(dt, gameobject)
     game.cpuScore.value = game.cpuScore.value + scoreIncrement
     gameobject.transform.position.x, gameobject.transform.position.y = w/2, h/2
     self.speed = ballSpeed
+    pitch = 1
   end
   
   if gameobject.transform.position.x > w  then
     game.playerScore.value = game.playerScore.value + scoreIncrement
     gameobject.transform.position.x, gameobject.transform.position.y = w/2, h/2
     self.speed = ballSpeed
+    pitch = 1
   end
   
 end

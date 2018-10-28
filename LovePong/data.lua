@@ -4,12 +4,14 @@ h = love.graphics.getHeight()
 -- GAME DATA
 
 scoreIncrement = 100
+differenceToWin = 1000
+leaderboardPath = "leaderboard/scores.txt"
 
 -- PADDLE DATA
 
 paddleWidth = 20
 paddleHeight = 100
-paddleSpeed = 500
+paddleSpeed = 700
 
 -- PLAYER DATA
 
@@ -36,6 +38,7 @@ speedIncrease = 30
 
 titleFontSize = 200
 fontSize = 50
+smallfontSize = 30
 fontPath = "font/D-DIN-Bold.otf"
 
 -- PLAYER SCORE TEXT DATA
@@ -66,4 +69,13 @@ orangebgPath = "sprites/orangebg.png"
 
 colors = {WHITE = {1,1,1,1}, GREY = {0.831, 0.831, 0.831, 1}, DARKGREY = {0.521, 0.521, 0.521,1}, BLACK = {0,0,0,1}, BLUE = {0.180,0.631,0.960,1}, RED = {1,0,0,1}}
 
+--SOUNDS
 
+pum = love.audio.newSource("sounds/pum.wav", "static")
+clack = love.audio.newSource("sounds/clack.wav", "static")
+clin = love.audio.newSource("sounds/clin2.wav", "static")
+
+pitch = 1
+
+pum:setVolume(0.7)
+clin:setVolume(0.7)

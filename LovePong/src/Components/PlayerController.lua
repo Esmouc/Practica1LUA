@@ -5,6 +5,7 @@ function PlayerController:new()
 end
 
 function PlayerController:update(dt, gameobject)
+  
   if gameobject.transform.position.y > 0 + paddleHeight/2 then
     if love.keyboard.isDown("up") then
       gameobject.transform.position.y = gameobject.transform.position.y - self.speed * dt; end end
@@ -12,4 +13,9 @@ function PlayerController:update(dt, gameobject)
   if gameobject.transform.position.y < h - paddleHeight/2 then
     if love.keyboard.isDown("down") then
       gameobject.transform.position.y = gameobject.transform.position.y + self.speed * dt; end end
+      
+  if math.abs(game.cpuScore.value - game.playerScore.value) >= differenceToWin then
+    game:ToGameOver()
+  end
+  
 end

@@ -1,7 +1,5 @@
 Game = Object:extend()
 
-local lObjects = {}
-
 function Game:new()
   
   if arg[#arg] == "-debug" then require("mobdebug").start() end -- Enable the debugging with ZeroBrane Studio
@@ -39,7 +37,13 @@ end
 function Game:draw()
     
   for _,v in pairs(self.lObjects) do
-    v:draw(dt)
+    v:draw()
   end
   
 end
+
+function Game:ToGameOver()
+  gameOver = GameOver()
+  gameState = GameStates.gameover
+end
+    

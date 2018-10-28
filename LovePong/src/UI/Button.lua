@@ -5,7 +5,7 @@ function Button:new(callback, x,y, newFont, value, textColor, rectColor,rectWidt
   self.x = x
   self.y = y
   self.rectWidth = rectWidth or 200
-  self.rectHeight = rectHeight or 100
+  self.rectHeight = rectHeight or 70
   self.rectColor = rectColor or colors.WHITE
   self.currentColor = self.rectColor
   self.isClicked = false
